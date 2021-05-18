@@ -131,7 +131,7 @@ def img_edit_distance(im1, im2, out_path=None):
             for l in ls:
                 if int(l, 2) in d: continue
                 found = False
-                l_arr = np.array(map(int, l))
+                l_arr = np.array(list(map(int, l)))
             
                 for l2,l2_arr in seen:
                     if np.abs(l_arr -l2_arr).sum() < 5:
@@ -139,8 +139,8 @@ def img_edit_distance(im1, im2, out_path=None):
                         found = True
                         break
                 if not found:
-                    d[int(l, 2)] = unichr(len(seen))
-                    seen.append((l, np.array(map(int, l))))
+                    d[int(l, 2)] = chr(len(seen))
+                    seen.append((l, np.array(list(map(int, l)))))
                     
         build(int_ls)
         build(int_ls2)

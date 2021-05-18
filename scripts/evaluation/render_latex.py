@@ -146,7 +146,7 @@ def main_parallel(line):
         if not os.path.exists(pdf_filename):
             output_err(output_path, 0, 'cannot compile', img_path)
         else:
-            os.system("convert -density 200 -quality 100 %s %s"%(pdf_filename, png_filename))
+            os.system("convert -density 200 -quality 100 %s -colorspace RGB %s"%(pdf_filename, png_filename))
             os.remove(pdf_filename)
             if os.path.exists(png_filename):
                 crop_image(png_filename, output_path)
